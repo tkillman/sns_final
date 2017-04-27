@@ -57,11 +57,9 @@ public class ReserveDAO extends SqlSessionDaoSupport{
 	//업주가 예약 정보를 확인을 이해 reserve테이블에서 알려주는 Dao
 	public List<ReserveDTO> e_getReserveList(String restaurant_number) {
 		
-		Map<String, String> map = new HashMap<>();
-		map.put("restaurant_number", restaurant_number);
+		List<ReserveDTO> reserveDTO = getSqlSession().selectList("reserve.e_getReserve", restaurant_number);
 		
-		List<ReserveDTO> reserveDTO = getSqlSession().selectList("reserve.e_getReserve", map);
-		System.out.println(reserveDTO);
+		
 		return reserveDTO;
 		
 	}
